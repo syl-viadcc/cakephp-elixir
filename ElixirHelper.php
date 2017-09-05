@@ -29,13 +29,13 @@ class ElixirHelper extends AppHelper {
         }
 
         if (isset($manifest[$file])) {
-            return '/'.trim($buildDirectory.'/'.$manifest[$file], '/');
+            return $this->webroot.trim($buildDirectory.'/'.$manifest[$file], '/');
         }
 
         $unversioned = WWW_ROOT.$file;
 
         if (file_exists($unversioned)) {
-            return '/'.trim($file, '/');
+            return $this->webroot.trim($file, '/');
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
